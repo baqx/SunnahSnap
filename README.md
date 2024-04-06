@@ -1,7 +1,7 @@
 <h1 align="center">SunnahSnap</h1>
 
 <p align="center">
-  <img src=screenshots/feature.png" width="450"/>
+  <img src="screenshots/feature.png" width="450"/>
 </p>
 
 <br/><br/>
