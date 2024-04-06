@@ -7,7 +7,7 @@
 <br/><br/>
 
 <a href="#">
-  <img src="https://img.shields.io/badge/ReactNative-0.61-blue.svg?style=flat-square" alt="npm version">
+  <img src="https://img.shields.io/badge/ReactNative-0.73.6-blue.svg?style=flat-square" alt="npm version">
 </a>
 
 ## Introduction
@@ -19,6 +19,7 @@ A platform where users can access Sunnah teachings or practices swiftly and conv
 - NPM (Node Package Manager)
 - React-Native
 
+## Install all packages
 > npm install
 
 ## Screenshots
@@ -58,7 +59,7 @@ A platform where users can access Sunnah teachings or practices swiftly and conv
     <td align="center">
       <a href="https://github.com/fawazahmed0">
         <img width="110" src="https://avatars1.githubusercontent.com/fawazahmed0" alt="Fawaz Ahmed"><br/>
-          <sub><b>Arian Derida S</b></sub>
+          <sub><b>Fawaz Ahmed</b></sub>
       </a>
     </td>
     
