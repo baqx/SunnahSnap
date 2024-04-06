@@ -1,7 +1,7 @@
 <h1 align="center">SunnahSnap</h1>
 
 <p align="center">
-  <img src=screeenshots/feature.png" width="450"/>
+  <img src=screenshots/feature.png" width="450"/>
 </p>
 
 <br/><br/>
@@ -20,6 +20,7 @@ A platform where users can access Sunnah teachings or practices swiftly and conv
 - React-Native
 
 ## Install all packages
+
 > npm install
 
 ## Screenshots
