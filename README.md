@@ -18,6 +18,7 @@ A platform where users can access Sunnah teachings or practices swiftly and conv
 
 - NPM (Node Package Manager)
 - React-Native
+- Expo
 
 ## Features
 
