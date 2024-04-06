@@ -19,6 +19,18 @@ A platform where users can access Sunnah teachings or practices swiftly and conv
 - NPM (Node Package Manager)
 - React-Native
 
+## Features
+
+- View Hadiths of different books
+- Switch Hadiths Languages
+
+### To do list
+- [x] Add multiple languages (Eng, Ara)
+- [ ] Add daily push notifications
+- [ ] Bookmarking Hadiths
+- [ ] Sharing Hadiths
+- [ ] Reactions to Hadiths
+
 ## Install all packages
 
 > npm install
