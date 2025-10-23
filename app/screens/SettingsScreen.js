@@ -1,9 +1,11 @@
-import React, { useState,useContext } from 'react';
-import { View, Text,SafeAreaView, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { useState,useContext } from 'react';
+import { View, Text, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import styles from './constants/MyStyles.js'; 
 import RNPickerSelect from 'react-native-picker-select';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SSContexts } from '../../contexts/SSContexts.js';
+import { Feather } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 export default function HadithsScreen() {
     const [selectedValue, setSelectedValue] = useState(null);
@@ -74,61 +76,85 @@ export default function HadithsScreen() {
     { label: 'Arabic', value: 'ara' },
   ];
 
-    return (
-        <ScrollView>
-        <SafeAreaView style={styles.container}>
-            <View style={styles.headerContainer}>
-                <Text style={styles.appTitle}>SunnahSnap</Text>
-                <Text style={styles.appSubtitle}>Sayings of Prophet Muhammad (ﷺ)</Text>
-            </View>
-            <Text style={styles.sectionTitle}>Settings</Text> 
-            <View style={styles.recCard}>
-              <Text>Select a Hadith Book</Text>
+  return (
+    <View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.appTitle}>SunnahSnap</Text>
+        <Text style={styles.appSubtitle}>Sayings of Prophet Muhammad (ﷺ)</Text>
+      </View>
+      <ScrollView>
+        <Text style={styles.sectionTitle}>Settings</Text> 
+        <View style={styles.recCard}>
+          <Text>Select a Hadith Book</Text>
+          {Platform.OS === 'ios' ? (
               <RNPickerSelect
-                placeholder={placeholder}
-                items={options}
-                onValueChange={(value) => setSelectedValue(value)}
-                value={selectedValue}
+              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              style={{ inputIOS: styles.inputIOS, viewContainer: styles.pickerContainer, iconContainer: styles.iconContainer, }}
+              Icon={() => {
+                return <Feather name="chevron-down" size={20} color="gray" />;
+              }}
+              placeholder={placeholder}
+              items={options}
+              onValueChange={(value) => setSelectedValue(value)}
+              value={selectedValue}
               />
-              {selectedValue && <Text>Selected: {selectedValue}</Text>}
-              <TouchableOpacity onPress={saveBook}>
-                    <View style={{padding:10,backgroundColor:'#6a3eb2',borderRadius:10,color:'white',justifyContent:'center',alignItems:'center',margin:5}}>
-                        <Text style={{color:'white'}}>Change</Text>
-                    </View>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.recCard}>
-              <Text>Select a Language for the hadiths</Text>
+          ) : (
               <RNPickerSelect
-                placeholder={placeholder2}
-                items={options2}
-                onValueChange={(value) => setSelectedValue2(value)}
-                value={selectedValue2}
+              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              placeholder={placeholder}
+              items={options}
+              onValueChange={(value) => setSelectedValue(value)}
+              value={selectedValue}
               />
-              {selectedValue2 && <Text>Selected: {selectedValue2}</Text>}
-              <TouchableOpacity onPress={saveLang}>
-                    <View style={{padding:10,backgroundColor:'#6a3eb2',borderRadius:10,color:'white',justifyContent:'center',alignItems:'center',margin:5}}>
-                        <Text style={{color:'white'}}>Change</Text>
-                    </View>
-              </TouchableOpacity>
+          )}
+          {/* {selectedValue && <Text>Selected: {selectedValue}</Text>} */}
+          <TouchableOpacity onPress={saveBook}>
+            <View style={{padding:10,backgroundColor:'#6a3eb2',borderRadius:10,color:'white',justifyContent:'center',alignItems:'center',margin:5}}>
+                <Text style={{color:'white'}}>Change</Text>
             </View>
-            
-            <View style={styles.recCard}>
-            <Text style={styles.recCardTitle}>Developer Information</Text>
-          <Text style={styles.recCardContent}>
-            This app was made with love by BAQDEV
-            </Text>
-            <Text style={styles.recCardContent}>Check out my github profile @ https://github.com/baqx</Text>
-            <Text style={styles.recCardContent}>Hire me for your App and Web development projects - Whatsapp(+2349019659410)</Text>
-            <Text style={styles.recCardContent}>Facebook Profile - https://web.facebook.com/baqeecodes</Text>
-
-            </View>
-            <View style={{alignItems:'center',margin:10}}>
-              <Text style={{alignItems:'center',color:'grey'}}>Copyright {new Date().getFullYear()}</Text>
-            </View>
-
-            
-        </SafeAreaView>
-        </ScrollView>
-    );
+          </TouchableOpacity>
+        </View>
+        <View style={styles.recCard}>
+          <Text>Select a Language for the hadiths</Text>
+          {Platform.OS === 'ios' ? ((
+              <RNPickerSelect
+              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              style={{ inputIOS: styles.inputIOS, viewContainer: styles.pickerContainer, iconContainer: styles.iconContainer, }}
+              Icon={() => {
+                return <Feather name="chevron-down" size={20} color="gray" />;
+              }}
+              placeholder={placeholder2}
+              items={options2}
+              onValueChange={(value) => setSelectedValue2(value)}
+              value={selectedValue2}
+              />          
+            )) : (
+              <RNPickerSelect
+              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              placeholder={placeholder2}
+              items={options2}
+              onValueChange={(value) => setSelectedValue2(value)}
+              value={selectedValue2}
+              />
+          )}
+          {/* {selectedValue2 && <Text>Selected: {selectedValue2}</Text>} */}
+          <TouchableOpacity onPress={saveLang}>
+                <View style={{padding:10,backgroundColor:'#6a3eb2',borderRadius:10,color:'white',justifyContent:'center',alignItems:'center',margin:5}}>
+                    <Text style={{color:'white'}}>Change</Text>
+                </View>
+          </TouchableOpacity>
+        </View>   
+        <View style={styles.recCard}>
+        <Text style={styles.recCardTitle}>Developer Information</Text>
+        <Text>This app was made with love by BAQDEV</Text>
+        <Text>Check out my github profile @ https://github.com/baqx</Text>
+        <Text>Hire me for your App and Web development projects - Whatsapp(+2349019659410)</Text>
+        <Text>Facebook Profile - https://web.facebook.com/baqeecodes</Text>
+        </View>
+        <View style={{alignItems:'center',margin:10, marginBottom: 120}}>
+          <Text style={{alignItems:'center',color:'grey'}}>Copyright {new Date().getFullYear()}</Text>
+        </View>
+      </ScrollView>
+    </View>
+  );
 }

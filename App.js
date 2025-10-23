@@ -5,15 +5,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './app/screens/HomeScreen'; 
 import HadithsScreen from './app/screens/HadithsScreen';
 import SettingsScreen from './app/screens/SettingsScreen';
+import FavoritesScreen from './app/screens/FavoritesScreen';
 import { Platform,Alert,StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SSContexts } from './contexts/SSContexts';
-import { Feather } from '@expo/vector-icons'; 
-
-
-
-
-
+import { Feather } from '@expo/vector-icons';
 
 
 
@@ -21,7 +17,13 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeTabs = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false,tabBarActiveTintColor: '#6a3eb2'}}
+    <Tab.Navigator screenOptions={{
+      headerShown: false ,
+      tabBarActiveTintColor: '#6a3eb2',
+      tabBarStyle: {
+        paddingTop: 8,
+      },
+    }}
     >
       <Tab.Screen
         name="Tab1"
@@ -30,6 +32,16 @@ const HomeTabs = () => {
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="favorites"
+        component={FavoritesScreen}
+        options={{
+          tabBarLabel: 'Favorites',
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="star" color={color} size={size} />
           ),
         }}
       />
