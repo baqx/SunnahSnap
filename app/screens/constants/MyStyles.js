@@ -60,4 +60,25 @@ export default StyleSheet.create({
     color:'grey',
     
   },
+  search: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f1f1f1',
+    borderRadius: 12, 
+    paddingHorizontal: 10,
+    marginHorizontal: 16,
+    marginVertical: 12,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+  },
+  input: {
+    flex: 1,
+    height: 44, // Standard touch target size
+    fontSize: 16,
+    color: '#333',
+    paddingVertical: 10,
+  },
+  icon: {
+    marginRight: 8,
+  },
 });
