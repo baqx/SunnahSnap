@@ -8,14 +8,13 @@ export default StyleSheet.create({
   },
   headerContainer: {
     backgroundColor: '#6a3eb2',
-    padding: 15,
-    paddingTop:40,
+    padding: 10,
+    paddingTop:50,
     paddingRight:10,
     paddingLeft:10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     elevation: 10,
-
   },
   appTitle: {
     fontWeight:'bold',
@@ -37,7 +36,7 @@ export default StyleSheet.create({
   },
   sectionTitle: {
     fontWeight:'600',
-    fontSize:22,
+    fontSize:20,
     margin:10,
     marginBottom:5,
   },
@@ -59,5 +58,68 @@ export default StyleSheet.create({
     margin:2,
     color:'grey',
     
+  },
+  search: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f1f1f1',
+    borderRadius: 12, 
+    paddingHorizontal: 10,
+    marginHorizontal: 16,
+    marginVertical: 12,
+    borderWidth: 1,
+    borderColor: '#CCCCCC',
+  },
+  input: {
+    flex: 1,
+    height: 44, // Standard touch target size
+    fontSize: 16,
+    color: '#333',
+    paddingVertical: 10,
+  },
+  icon: {
+    marginRight: 8,
+  },
+  title: {
+    fontSize: 18,
+  },
+  readMoreButton: {
+    padding: 10,
+    paddingRight: -10,
+    paddingTop: -5,
+    alignItems: 'flex-end',
+  },
+  readMoreText: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    color: '#6a3eb2',
+  },
+    pickerContainer: {
+    height: 40,
+    width: '100%', 
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    justifyContent: 'center',
+    fontWeight: 'bold',
+  },
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    color: 'black',
+    backgroundColor: 'white',
+  },
+  iconContainer: {
+        top: 10,
+        right: 12,
+  },
+  line: {
+    height: 1,                
+    backgroundColor: '#CCCCCC',
+    marginVertical: 10,       
   },
 });
