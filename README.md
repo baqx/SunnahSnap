@@ -76,6 +76,11 @@ A platform where users can access Sunnah teachings or practices swiftly and conv
           <sub><b>Fawaz Ahmed</b></sub>
       </a>
     </td>
-    
+    <td align="center">
+      <a href="https://github.com/NikolasPetriti">
+        <img width="110" src="https://avatars1.githubusercontent.com/NikolasPetriti" alt="Nikolas Petriti"><br/>
+          <sub><b>Nikolas Petriti</b></sub>
+      </a>
+    </td>
   </tr>
 </table>
