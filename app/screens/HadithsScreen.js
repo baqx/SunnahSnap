@@ -11,7 +11,6 @@ import {
   Alert,
 } from 'react-native';
 import styles from './constants/MyStyles.js';
-import Icon from 'react-native-ico-material-design';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SSContexts } from '../../contexts/SSContexts.js';
 import { Feather } from '@expo/vector-icons';
@@ -128,7 +127,7 @@ const HadithItem = ({ hadithNumber, text, book, hadith, searchWord, searching, l
                     {parts.map((part, i) => {
                         if (parts.length === 2 && parts[0].length < parts[1].length) {
                             if (i === 0) {
-                                return <Text key={i} style={{ backgroundColor: '#FFA500' }}>{part}</Text>
+                                return <Text key={i} style={styles.highlightText}>{part}</Text>
                             } else {
                                 return <Text key={i}>{part}</Text>
                             }
@@ -137,7 +136,7 @@ const HadithItem = ({ hadithNumber, text, book, hadith, searchWord, searching, l
                             return <Text key={i}>{part}</Text>
                         }
                         else {
-                            return <Text key={i} style={{ backgroundColor: '#FFA500' }}>{part}</Text>
+                            return <Text key={i} style={styles.highlightText}>{part}</Text>
                         }
                     })}
                 </>
@@ -146,19 +145,23 @@ const HadithItem = ({ hadithNumber, text, book, hadith, searchWord, searching, l
             )}{lang === "eng" ? "." : ""}
         </Text>
         <View style={styles.line} />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <View style={{ alignItems: 'flex-end' }}>
-                <Text style={styles.recCardFoot}>No. {hadithNumber}</Text>
-            </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 60 }}>
-              <TouchableOpacity onPress={() => onShare(text, bookName, hadithNumber)}>
-                <Feather name="share" size={20} color="#333" />
+        <View style={styles.actionButtonContainer}>
+            <Text style={styles.recCardFoot}>No. {hadithNumber}</Text>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+              <TouchableOpacity 
+                onPress={() => onShare(text, bookName, hadithNumber)}
+                style={styles.actionButton}
+              >
+                <Feather name="share-2" size={20} color="#6a3eb2" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={toggleSave}>
+              <TouchableOpacity 
+                onPress={toggleSave}
+                style={styles.actionButton}
+              >
                 {isSaved ? 
-                  <Ionicons name="star" size={20} color="gold" />
+                  <Ionicons name="star" size={20} color="#fbbf24" />
                     :
-                  <Ionicons name="star" size={20} color="#333" /> 
+                  <Ionicons name="star-outline" size={20} color="#6b7280" /> 
                 }
               </TouchableOpacity>
             </View>
@@ -338,11 +341,20 @@ export default function HadithsScreen() {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <TouchableOpacity onPress={backButton} style={{ marginRight: 10 }}>
-            <Icon name="keyboard-left-arrow-button" size="14" width="40" color="white" />
+          <TouchableOpacity 
+            onPress={backButton} 
+            style={{ 
+              marginRight: 12,
+              padding: 8,
+              borderRadius: 10,
+              backgroundColor: 'rgba(255, 255, 255, 0.2)'
+            }}
+            activeOpacity={0.7}
+          >
+            <Feather name="arrow-left" size={24} color="white" />
           </TouchableOpacity>
           <View style={{ flexDirection: 'column', flex: 1 }}>
-            {metadata.name && <Text style={styles.appTitle}>SunnahSnap - {metadata.name}</Text>}
+            {metadata.name && <Text style={styles.appTitle}>{metadata.name}</Text>}
             <Text style={styles.appSubtitle}>Section {sectionTitle}</Text>
           </View>
         </View>

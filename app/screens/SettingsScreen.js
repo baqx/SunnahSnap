@@ -84,14 +84,14 @@ export default function HadithsScreen() {
       </View>
       <ScrollView>
         <Text style={styles.sectionTitle}>Settings</Text> 
-        <View style={styles.recCard}>
-          <Text>Select a Hadith Book</Text>
+        <View style={styles.settingsCard}>
+          <Text style={styles.settingsLabel}>Select a Hadith Book</Text>
           {Platform.OS === 'ios' ? (
               <RNPickerSelect
-              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              pickerProps={{style: {color: '#1a1a1a', backgroundColor: '#ffffff'}, itemStyle: {color: '#1a1a1a', backgroundColor: '#ffffff'}}}
               style={{ inputIOS: styles.inputIOS, viewContainer: styles.pickerContainer, iconContainer: styles.iconContainer, }}
               Icon={() => {
-                return <Feather name="chevron-down" size={20} color="gray" />;
+                return <Feather name="chevron-down" size={20} color="#6b7280" />;
               }}
               placeholder={placeholder}
               items={options}
@@ -100,28 +100,27 @@ export default function HadithsScreen() {
               />
           ) : (
               <RNPickerSelect
-              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              pickerProps={{style: {color: '#1a1a1a', backgroundColor: '#ffffff'}, itemStyle: {color: '#1a1a1a', backgroundColor: '#ffffff'}}}
               placeholder={placeholder}
               items={options}
               onValueChange={(value) => setSelectedValue(value)}
               value={selectedValue}
               />
           )}
-          {/* {selectedValue && <Text>Selected: {selectedValue}</Text>} */}
-          <TouchableOpacity onPress={saveBook}>
-            <View style={{padding:10,backgroundColor:'#6a3eb2',borderRadius:10,color:'white',justifyContent:'center',alignItems:'center',margin:5}}>
-                <Text style={{color:'white'}}>Change</Text>
+          <TouchableOpacity onPress={saveBook} activeOpacity={0.8}>
+            <View style={styles.buttonPrimary}>
+                <Text style={styles.buttonText}>Save Changes</Text>
             </View>
           </TouchableOpacity>
         </View>
-        <View style={styles.recCard}>
-          <Text>Select a Language for the hadiths</Text>
+        <View style={styles.settingsCard}>
+          <Text style={styles.settingsLabel}>Select a Language for the hadiths</Text>
           {Platform.OS === 'ios' ? ((
               <RNPickerSelect
-              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              pickerProps={{style: {color: '#1a1a1a', backgroundColor: '#ffffff'}, itemStyle: {color: '#1a1a1a', backgroundColor: '#ffffff'}}}
               style={{ inputIOS: styles.inputIOS, viewContainer: styles.pickerContainer, iconContainer: styles.iconContainer, }}
               Icon={() => {
-                return <Feather name="chevron-down" size={20} color="gray" />;
+                return <Feather name="chevron-down" size={20} color="#6b7280" />;
               }}
               placeholder={placeholder2}
               items={options2}
@@ -130,29 +129,28 @@ export default function HadithsScreen() {
               />          
             )) : (
               <RNPickerSelect
-              pickerProps={{style: {color: 'black', backgroundColor: 'white'}, itemStyle: {color: 'black', backgroundColor: 'white'}}}
+              pickerProps={{style: {color: '#1a1a1a', backgroundColor: '#ffffff'}, itemStyle: {color: '#1a1a1a', backgroundColor: '#ffffff'}}}
               placeholder={placeholder2}
               items={options2}
               onValueChange={(value) => setSelectedValue2(value)}
               value={selectedValue2}
               />
           )}
-          {/* {selectedValue2 && <Text>Selected: {selectedValue2}</Text>} */}
-          <TouchableOpacity onPress={saveLang}>
-                <View style={{padding:10,backgroundColor:'#6a3eb2',borderRadius:10,color:'white',justifyContent:'center',alignItems:'center',margin:5}}>
-                    <Text style={{color:'white'}}>Change</Text>
+          <TouchableOpacity onPress={saveLang} activeOpacity={0.8}>
+                <View style={styles.buttonPrimary}>
+                    <Text style={styles.buttonText}>Save Changes</Text>
                 </View>
           </TouchableOpacity>
         </View>   
-        <View style={styles.recCard}>
+        <View style={styles.developerInfo}>
         <Text style={styles.recCardTitle}>Developer Information</Text>
-        <Text>This app was made with love by BAQDEV</Text>
-        <Text>Check out my github profile @ https://github.com/baqx</Text>
-        <Text>Hire me for your App and Web development projects - Whatsapp(+2349019659410)</Text>
-        <Text>Facebook Profile - https://web.facebook.com/baqeecodes</Text>
+        <Text style={styles.developerText}>This app was made with love by BAQDEV</Text>
+        <Text style={styles.developerText}>Check out my github profile @ https://github.com/baqx</Text>
+        <Text style={styles.developerText}>Hire me for your App and Web development projects - Whatsapp(+2349019659410)</Text>
+        <Text style={styles.developerText}>Facebook Profile - https://web.facebook.com/baqeecodes</Text>
         </View>
-        <View style={{alignItems:'center',margin:10, marginBottom: 120}}>
-          <Text style={{alignItems:'center',color:'grey'}}>Copyright {new Date().getFullYear()}</Text>
+        <View style={{alignItems:'center',margin:20, marginBottom: 120}}>
+          <Text style={{color:'#9ca3af', fontSize: 13, fontWeight: '500'}}>Copyright {new Date().getFullYear()}</Text>
         </View>
       </ScrollView>
     </View>
