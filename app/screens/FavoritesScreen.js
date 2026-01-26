@@ -126,7 +126,7 @@ const HadithItem = ({ number, text, book, searchWord, searching, onRemove }) => 
                     {parts.map((part, i) => {
                         if (parts.length === 2 && parts[0].length < parts[1].length) {
                             if (i === 0) {
-                                return <Text key={i} style={{ backgroundColor: '#FFA500' }}>{part}</Text>
+                                return <Text key={i} style={styles.highlightText}>{part}</Text>
                             } else {
                                 return <Text key={i}>{part}</Text>
                             }
@@ -135,7 +135,7 @@ const HadithItem = ({ number, text, book, searchWord, searching, onRemove }) => 
                             return <Text key={i}>{part}</Text>
                         }
                         else {
-                            return <Text key={i} style={{ backgroundColor: '#FFA500' }}>{part}</Text>
+                            return <Text key={i} style={styles.highlightText}>{part}</Text>
                         }
                     })}
                 </>
@@ -144,19 +144,23 @@ const HadithItem = ({ number, text, book, searchWord, searching, onRemove }) => 
             )}.
         </Text>
         <View style={styles.line} />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <View style={{ alignItems: 'flex-end' }}>
-                <Text style={styles.recCardFoot}>No. {number}</Text>
-            </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 60 }}>
-              <TouchableOpacity onPress={() => onShare(text, book, number)}>
-                <Feather name="share" size={20} color="#333" />
+        <View style={styles.actionButtonContainer}>
+            <Text style={styles.recCardFoot}>No. {number}</Text>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+              <TouchableOpacity 
+                onPress={() => onShare(text, book, number)}
+                style={styles.actionButton}
+              >
+                <Feather name="share-2" size={20} color="#6a3eb2" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={toggleSave}>
+              <TouchableOpacity 
+                onPress={toggleSave}
+                style={styles.actionButton}
+              >
                 {isSaved ? 
-                  <Ionicons name="star" size={20} color="gold" />
+                  <Ionicons name="star" size={20} color="#fbbf24" />
                     :
-                  <Ionicons name="star" size={20} color="#333" /> 
+                  <Ionicons name="star-outline" size={20} color="#6b7280" /> 
                 }
               </TouchableOpacity>
             </View>
@@ -281,7 +285,11 @@ export default function FavoritesScreen() {
                 <Feather name="search" size={20} color="#888" style={styles.icon} />
               </View>
               {hadiths.length === 0 ?
-                <Text style={{color: '#888', alignSelf: 'center', paddingTop: 200}}>You don't have any favorite hadith!</Text>
+                <View style={styles.emptyState}>
+                  <Ionicons name="star-outline" size={64} color="#d1d5db" />
+                  <Text style={styles.emptyStateText}>You don't have any favorite hadith yet!</Text>
+                  <Text style={[styles.emptyStateText, { fontSize: 14, marginTop: 4 }]}>Start bookmarking hadiths to see them here</Text>
+                </View>
               :
                 <View style={{paddingBottom: headerHeight}}>
                     {hadiths.map((item, i) => (

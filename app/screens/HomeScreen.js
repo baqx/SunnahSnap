@@ -203,7 +203,7 @@ export default function HomeScreen() {
     );
 
     return (
-      <View  style={styles.recCard}>
+      <View style={styles.recCard}>
         <Text style={styles.recCardTitle}>{sectionName}</Text>
         <Text style={styles.recCardContent} numberOfLines={showRandom ? undefined : 3}>{hadithText}.</Text>
         {!showRandom ?
@@ -216,22 +216,28 @@ export default function HomeScreen() {
         </TouchableOpacity>
         }
         <View style={styles.line} />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={styles.recCardFoot}>No {hadithNumber}</Text>
-          <View style={{ alignItems: 'flex-end' }}>
-            <Text style={styles.recCardFoot}>
+        <View style={styles.actionButtonContainer}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.recCardFoot}>No {hadithNumber}</Text>
+            <Text style={[styles.recCardFoot, { marginTop: 2 }]}>
               Book {hadithReference.book}, Hadith {hadithReference.hadith}
             </Text>
           </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 60 }}>
-            <TouchableOpacity onPress={() => onShare(hadithText, hadithBook, hadithNumber)}>
-              <Feather name="share" size={20} color="#333" />
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <TouchableOpacity 
+              onPress={() => onShare(hadithText, hadithBook, hadithNumber)}
+              style={styles.actionButton}
+            >
+              <Feather name="share-2" size={20} color="#6a3eb2" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => updateStorage(hadithNumber, hadithText).then(() => checkStatus())}>
+            <TouchableOpacity 
+              onPress={() => updateStorage(hadithNumber, hadithText).then(() => checkStatus())}
+              style={styles.actionButton}
+            >
               {isSaved ? 
-                <Ionicons name="star" size={20} color="gold" />
+                <Ionicons name="star" size={20} color="#fbbf24" />
                   :
-                <Ionicons name="star" size={20} color="#333" />
+                <Ionicons name="star-outline" size={20} color="#6b7280" />
               }
             </TouchableOpacity>
           </View>
@@ -283,10 +289,18 @@ export default function HomeScreen() {
             </View>
             <View style={{paddingBottom: headerHeight}}>
               {sections.map((item) => (
-                <TouchableOpacity key={item[0]} onPress={() => goToHadiths(item[0])} style={styles.recCard}>
-                  <Text style={styles.title}>
-                    {item[1]}
-                  </Text>
+                <TouchableOpacity 
+                  key={item[0]} 
+                  onPress={() => goToHadiths(item[0])} 
+                  style={styles.recCard}
+                  activeOpacity={0.7}
+                >
+                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Text style={styles.title} numberOfLines={2}>
+                      {item[1]}
+                    </Text>
+                    <Feather name="chevron-right" size={20} color="#6b7280" style={{ marginLeft: 12 }} />
+                  </View>
                 </TouchableOpacity>
               ))}
             </View>
